@@ -1,0 +1,108 @@
+<html>
+<head>
+</head>
+<body>
+<h1>Transformaciones conjuntas</h1>
+<p>Vector para la transformacion => p1 <input id="p1" size=8/> , p2 <input id="p2" size=8/></p>
+<p>Transformacion inicial <input id="ti" size=12/></p>
+<p>Transformacion final <input id="tf" size=12/></p>
+<p>
+    <button id="btn_tr" onclick="traslacion()">Procesar </button>
+</p>
+
+<script>
+    function byId(id){
+	    return document.getElementById(id).value;
+	}
+    function strarr2num(arreglo, lim) {
+        var arrs = arreglo.split(lim);
+        arrn = [];
+        arrs.forEach((elem) => {
+            arrn.push(Number(elem));
+		});
+		return arrn;
+	}
+    function matrizEscalado(sx,sy,sz) {
+        return [
+            [sx, 0, 0, 0],
+            [0, sy, 0, 0],
+            [0, 0, sz, 0],
+            [0, 0, 0, 1],          
+        ];
+    }
+    function matrizTraslacion(tx,ty,tz){
+            return [
+            [1, 0, 0, tx],
+            [0, 1, 0, ty],
+            [0, 0, 1, tz],
+            [0, 0, 0, 1],          
+        ];
+    }
+	function matrizRotacionX(theta){
+	    var cosTheta = Math.cos(theta);
+		var sinTheta = Math.sin(theta);
+        return [
+            [1, 0, 0, 0],
+            [0, cosTheta, -sinTheta, 0],
+            [0, sinTheta, cosTheta, 0],
+            [0, 0, 0, 1],          
+        ];
+    }
+	function matrizRotacionY(theta){
+	    var cosTheta = Math.cos(theta);
+		var sinTheta = Math.sin(theta);
+        return [
+            [cosTheta, 0, sinTheta, 0],
+            [0, 1, 0, 0],
+            [-sinTheta, 0, cosTheta, 0],
+            [0, 0, 0, 1],          
+        ];
+    }
+	function matrizRotacionZ(theta){
+	    var cosTheta = Math.cos(theta);
+		var sinTheta = Math.sin(theta);
+        return [
+            [cosTheta, -sinTheta, 0, 0],
+            [sinTheta, cosTheta, 0, 0],
+            [0, 0, 1, 0],
+            [0, 0, 0, 1],          
+        ];
+    }
+	function traslacion(){
+	    var cosTheta = Math.cos(theta);
+		var sinTheta= Math.sin(theta);
+        return [
+            [1, 0, 0, 0],
+            [0, cosTheta, -sinTheta, 0],
+            [0, sinTheta, cosTheta, 0],
+            [0, 0, 0, 1],          
+        ];
+    }
+	function multiplicarMatrizVector(matriz, vector) {
+        var resultado = [];
+        for (var i = 0; i < matriz.length; i++) {
+            var sum = 0;
+            for (var j = 0; j < vector.length; j++) {
+                sum += matriz[i][j] * vector[j];
+            }
+            resultado.push(sum);
+        }
+        return resultado;
+    }
+	function traslacion(){
+	    var p1 = starr2num(byId("p1"), ",");
+		var p2 = starr2num(byId("p2"), ",");
+		var ti = starr2num(byId("ti"), ",");
+		var tf = starr2num(byId("tf"), ",");
+		
+		var matriztrl = matrizTraslacion(tx, ty, tz);
+        vo.push(1);
+		var res = multiplicarMatrizVector(matriztr1, p1);
+		
+	}
+	
+
+
+</script>
+</body>
+</html>
