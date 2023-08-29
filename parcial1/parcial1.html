@@ -87,7 +87,7 @@
 		var tf = parseFloat(byId("tf"));
 		
 		var matriztrl = matrizTraslacion(tx, ty, tz);
-        vo.push(1);
+        p1.push(1);
 		var res1 = multiplicarMatrizVector(matriztr1, p1);
 		
 		byId("vr")= res1.slice(0, 3).join(", ");
@@ -99,7 +99,7 @@
         var tf = parseFloat(byId("tf"));
 
         var matrizEsc = matrizEscalado(sx, sy, sz);
-        voe.push(1);
+        p1.push(1);
         var res1 = multiplicarMatrizVector(matrizEsc, p1);
 
         byId("vr").value = res1.slice(0, 3).join(", ");
@@ -114,7 +114,7 @@
         var matrizRotY = matrizRotacionY(angleY);
         var matrizRotZ = matrizRotacionZ(angleZ);
 
-        vor.push(1);
+        p1.push(1);
         var res1 = multiplicarMatrizVector(matrizRotZ, multiplicarMatrizVector(matrizRotY, multiplicarMatrizVector(matrizRotX, vor)));
 
         document.getElementById("vr").value = res1.slice(0, 3).join(", ");
@@ -127,7 +127,7 @@
 		var tf = parseFloat(byId("tf"));
 		
 		var matriztrl = matrizTraslacion(tx, ty, tz);
-        vo.push(1);
+        p2.push(1);
 		var res1 = multiplicarMatrizVector(matriztr1, p2);
 		
 		byId("vr")= res1.slice(0, 3).join(", ");
@@ -139,7 +139,7 @@
         var tf = parseFloat(byId("tf"));
 
         var matrizEsc = matrizEscalado(sx, sy, sz);
-        voe.push(1);
+        p2.push(1);
         var res1 = multiplicarMatrizVector(matrizEsc, p2);
 
         byId("vr").value = res1.slice(0, 3).join(", ");
@@ -154,7 +154,7 @@
         var matrizRotY = matrizRotacionY(angleY);
         var matrizRotZ = matrizRotacionZ(angleZ);
 
-        vor.push(1);
+        p2.push(1);
         var res1 = multiplicarMatrizVector(matrizRotZ, multiplicarMatrizVector(matrizRotY, multiplicarMatrizVector(matrizRotX, vor)));
 
         document.getElementById("vr").value = res1.slice(0, 3).join(", ");
