@@ -6,6 +6,7 @@
 <p>Vector para la transformacion => p1 <input id="p1" size=8/> , p2 <input id="p2" size=8/></p>
 <p>Transformacion inicial <input id="ti" size=12/></p>
 <p>Transformacion final <input id="tf" size=12/></p>
+<p>Vector resultado (posterior a las transformaciones anteriores) => p1'y p2' <input id="vr" size=18/></p>
 <p>
     <button id="btn_tr" onclick="traslacion()">Procesar </button>
 </p>
@@ -68,6 +69,98 @@
             [0, 0, 0, 1],          
         ];
     }
+	function multiplicarMatrizVector(matriz, vector) {
+        var resultado = [];
+        for (var i = 0; i < matriz.length; i++) {
+            var sum = 0;
+            for (var j = 0; j < vector.length; j++) {
+                sum += matriz[i][j] * vector[j];
+            }
+            resultado.push(sum);
+        }
+        return resultado;
+    }
+	function traslacion1(){
+	    var p1 = starr2num(byId("p1"), ",");
+
+		var ti = parseFloat(byId("ti"));
+		var tf = parseFloat(byId("tf"));
+		
+		var matriztrl = matrizTraslacion(tx, ty, tz);
+        vo.push(1);
+		var res1 = multiplicarMatrizVector(matriztr1, p1);
+		
+		byId("vr")= res1.slice(0, 3).join(", ");
+	}
+	function escalado1() 
+    {
+        var p1 = strarr2num(byId("p1"), ",");
+        var ti = parseFloat(byId("ti"));
+        var tf = parseFloat(byId("tf"));
+
+        var matrizEsc = matrizEscalado(sx, sy, sz);
+        voe.push(1);
+        var res1 = multiplicarMatrizVector(matrizEsc, p1);
+
+        byId("vr").value = res1.slice(0, 3).join(", ");
+    }
+	function rotacion1(){
+        var p1 = strarr2num(byId("p1"), ",");
+        var angleX = parseFloat(byId("ti")) * (Math.PI / 180.0); 
+        var angleY = parseFloat(byId("ti")) * (Math.PI / 180.0); 
+        var angleZ = parseFloat(byId("ti")) * (Math.PI / 180.0); 
+
+        var matrizRotX = matrizRotacionX(angleX);
+        var matrizRotY = matrizRotacionY(angleY);
+        var matrizRotZ = matrizRotacionZ(angleZ);
+
+        vor.push(1);
+        var res1 = multiplicarMatrizVector(matrizRotZ, multiplicarMatrizVector(matrizRotY, multiplicarMatrizVector(matrizRotX, vor)));
+
+        document.getElementById("vr").value = res1.slice(0, 3).join(", ");
+    
+	}
+	function traslacion2(){
+	    var p2 = starr2num(byId("p2"), ",");
+
+		var ti = parseFloat(byId("ti"));
+		var tf = parseFloat(byId("tf"));
+		
+		var matriztrl = matrizTraslacion(tx, ty, tz);
+        vo.push(1);
+		var res1 = multiplicarMatrizVector(matriztr1, p2);
+		
+		byId("vr")= res1.slice(0, 3).join(", ");
+	}
+	function escalado2() 
+    {
+        var p2 = strarr2num(byId("p2"), ",");
+        var ti = parseFloat(byId("ti"));
+        var tf = parseFloat(byId("tf"));
+
+        var matrizEsc = matrizEscalado(sx, sy, sz);
+        voe.push(1);
+        var res1 = multiplicarMatrizVector(matrizEsc, p2);
+
+        byId("vr").value = res1.slice(0, 3).join(", ");
+    }
+	function rotacion2(){
+        var p2 = strarr2num(byId("p2"), ",");
+        var angleX = parseFloat(byId("ti")) * (Math.PI / 180.0); 
+        var angleY = parseFloat(byId("ti")) * (Math.PI / 180.0); 
+        var angleZ = parseFloat(byId("ti")) * (Math.PI / 180.0); 
+
+        var matrizRotX = matrizRotacionX(angleX);
+        var matrizRotY = matrizRotacionY(angleY);
+        var matrizRotZ = matrizRotacionZ(angleZ);
+
+        vor.push(1);
+        var res1 = multiplicarMatrizVector(matrizRotZ, multiplicarMatrizVector(matrizRotY, multiplicarMatrizVector(matrizRotX, vor)));
+
+        document.getElementById("vr").value = res1.slice(0, 3).join(", ");
+    
+	}
+
 
 </script>
 </body>
